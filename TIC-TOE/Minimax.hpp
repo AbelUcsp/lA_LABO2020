@@ -15,7 +15,6 @@ using namespace std;
 
 template <typename T, size_t N> const T* mybegin(const T(&a)[N]) { return a; }
 template <typename T, size_t N> const T* myend(const T(&a)[N]) { return a + N; }
-
 vector<char> board;
 
 bool isValidMove(int pos, vector<char> boardT) //check in board if can move in a empty box

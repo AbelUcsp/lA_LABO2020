@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
 	A.A_asterico(A.root->nodo_cuadricula[nodo_inicial], A.root->nodo_cuadricula[nodo_final]);
 
 
-	cout << "SALIDA " << A.root->nodo_cuadricula.size() << endl;
+	cout << "SALIDA" << A.root->nodo_cuadricula.size() << endl;
 
 
 

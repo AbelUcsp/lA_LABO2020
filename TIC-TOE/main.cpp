@@ -1,8 +1,6 @@
 #include "Minimax.hpp"
 
 
-
-
 int width = 300.0f;
 int height = 300.0f;
 int global_X;
@@ -297,7 +295,7 @@ int main(int argc, char** argv) {
 
 
 	for (size_t i = 0; i < 9; ++i)
-		cout << coordenadas[i].first << " " << coordenadas[i].second << endl;
+		//cout << coordenadas[i].first << " " << coordenadas[i].second << endl;
 	cout << endl;
 
 
