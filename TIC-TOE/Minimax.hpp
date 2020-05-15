@@ -72,7 +72,7 @@ int AlguienGano() {
 
 int MiniMax(int profStatic, int profundidad, bool MinMax) { ///MinMax true=IA, false=JUGADOR
     int marcador = AlguienGano();
-    int mejorValor;
+    int mejorValor = 10;
 
     if (marcador == 0)
         return 10;///maximizar
@@ -80,32 +80,38 @@ int MiniMax(int profStatic, int profundidad, bool MinMax) { ///MinMax true=IA, f
         return -10;///minimizar
     if (!ExistenMovimientos())
         return 0;
+
     if (profundidad < profStatic && profStatic <= 4) {
-    //if (profundidad < profStatic && profStatic < 4) {
         return 0;
     }
 
+ 
 
     if (MinMax) {
         mejorValor = -32500;
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j)
                 if (tablero[i][j] == -1) { ///FREE
                     tablero[i][j] = 0;
                     mejorValor = max(mejorValor, MiniMax(profStatic, profundidad + 1, !MinMax));
                     tablero[i][j] = -1;
                 }
+          
+
+        }
         return mejorValor;
     }
     else {
         mejorValor = 32500;
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j)
                 if (tablero[i][j] == -1) { ///FREE
                     tablero[i][j] = 1;
                     mejorValor = min(mejorValor, MiniMax(profStatic, profundidad + 1, !MinMax));
                     tablero[i][j] = -1;
                 }
+            
+        }
         return mejorValor;
     }
 }
