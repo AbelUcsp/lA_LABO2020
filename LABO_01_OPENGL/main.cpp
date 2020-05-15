@@ -6,8 +6,8 @@ int elementos = 100;
 grafoIA A(elementos);
 
 
-int nodo_inicial = 170;
-int nodo_final = 8070;
+int nodo_inicial = 110;
+int nodo_final = 8079;
 
 float width = 800.f;
 float height = 700.f;
@@ -31,7 +31,7 @@ void displayGizmo()
 
 
 
-	
+
 
 	///glBegin(GL_POINTS);
 	for (i = 0; i < A.visitados.size(); ++i) {
@@ -43,7 +43,7 @@ void displayGizmo()
 		glVertex2d(A.solucionA[i]->y * idc, A.solucionA[i]->x * idc);
 	}
 
-	
+
 
 
 
@@ -119,7 +119,7 @@ GLvoid window_key(unsigned char key, int x, int y) {
 
 int main(int argc, char** argv) {
 
-	//A.root->bloquear(500);
+	A.root->bloquear(500);
 	A.ANCHURA(A.root->nodo_cuadricula[nodo_inicial], A.root->nodo_cuadricula[nodo_final]);
 	A.A_asterico(A.root->nodo_cuadricula[nodo_inicial], A.root->nodo_cuadricula[nodo_final]);
 
