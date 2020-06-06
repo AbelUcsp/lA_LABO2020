@@ -1,5 +1,7 @@
 # Algoritmo Genético F(x,y) = x^2 -2xy + y^2 <br/>
 <br/>
+AZUL = mejor individuo <br/>
+ROJO = promedio <br/>
 en la carpeta fotos se puede ver la primera prueba con una población de 5 individuos y 1000 generaciones<br/>
 como se aprecia no converge en una solución óptima.
 se aplica una segunda prueba con 1500 generaciones y como se aprecia en el grafico se llega a una solución optima<br/>
