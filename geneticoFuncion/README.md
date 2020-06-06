@@ -3,7 +3,7 @@
 en la carpeta fotos se puede ver la primera prueba con una población de 5 individuos y 1000 generaciones<br/>
 como se aprecia no converge en una solución óptima.
 se aplica una segunda prueba con 1500 generaciones y como se aprecia en el grafico se llega a una solución optima<br/>
-se estabiliza 
+se estabiliza el grafico <br/> <br/>
 Se modificó la función de aleatorios. <br/>
 	antes el rango inicial x = 0-127, y = 0-255 <br/>
 	ahora el rango inicial x = 0-30, y = 0-55 <br/>
