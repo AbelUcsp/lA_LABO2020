@@ -12,7 +12,7 @@
 #include<GL/glut.h>
 
 using namespace std;
-int CUANTOSELEMENTOS = 1200;
+int CUANTOSELEMENTOS = 1800;
 
 int width = CUANTOSELEMENTOS + 100;
 int height = 600.0f;
@@ -98,7 +98,7 @@ float mutacion_(int elemento, int punto1, int punto2) {
 	return return_;
 }
 
-int algoritmos_gen(int iteraciones) {
+int algoritmos_gen(int iteraciones, int idividuos) {
 	vector< pair<coor, float> > todo;
 	vector< pair<coor, float> > seleccion;
 	vector< pair<coor, float> > cruzamiento;
@@ -112,21 +112,23 @@ int algoritmos_gen(int iteraciones) {
 	tmpmutacion.reserve(1000);
 
 
-	//int x1 = random(1000) % 127;	int x2 = random(1000) % 127;	int x3 = random(1000) % 127;	int x4 = random(1000) % 127;	int x5 = random(1000) % 127;
-	//int x1 = random(1000) % 50;	int x2 = random(1000) % 55;	int x3 = random(1000) % 20;	int x4 = random(1000) % 70;	int x5 = random(1000) % 100;
-	int x1 = random(1000) % 10;	int x2 = random(1000) % 20;	int x3 = random(1000) % 20;	int x4 = random(1000) % 30;	int x5 = random(1000) % 25;
-	int ind1 = x1 + random(1000) % 40;
-	int ind2 = x2 + random(1000) % 55;		
-	int ind3 = x3 + random(1000) % 20;		
-	int ind4 = x4 + random(1000) % 30;		
-	int ind5 = x5 + random(1000) % 15;		
-	float S = F(x1, ind1 - x1) + F(x2, ind2 - x2) + F(x3, ind3 - x3) + F(x4, ind4 - x4) + F(x5, ind5 - x5);
-	float media = S / 5;
-	todo.push_back(make_pair(coor(x1, ind1 - x1), F(x1, ind1 - x1) / media));
-	todo.push_back(make_pair(coor(x2, ind2 - x2), F(x2, ind2 - x2) / media));
-	todo.push_back(make_pair(coor(x3, ind3 - x3), F(x3, ind3 - x3) / media));
-	todo.push_back(make_pair(coor(x4, ind4 - x4), F(x4, ind4 - x4) / media));
-	todo.push_back(make_pair(coor(x5, ind5 - x5), F(x5, ind5 - x5) / media));
+
+	float S = 0.0f;
+	float media = 0.0f; 
+	vector< pair<float, float> > tmpS;
+	tmpS.reserve(idividuos);
+	int x, y;
+	for (int i = 0; i < idividuos; i++) {
+		x = random(1000) % 36;
+		y = random(1000) % 51;
+		S += F(x, y);
+		tmpS.push_back( make_pair(x,y));
+	}
+	
+	media = S/ idividuos;
+	for (int i = 0; i < idividuos; i++) 
+		todo.push_back(make_pair(coor(tmpS[i].first, tmpS[i].second), F(tmpS[i].first, tmpS[i].second ) / media));
+	
 
 	int tmpX; int tmpY;
 	coor mejor__(0,0);
@@ -208,7 +210,7 @@ int algoritmos_gen(int iteraciones) {
 		mejor.push_back(make_pair(mejor__.x, mejor__.y));
 		iteraciones--;
 	}
-	return ind1;
+	return 1;
 }
 
 
@@ -229,8 +231,12 @@ void displayGizmo()
 
 	glEnd(); ///end 2D
 
-	
-
+	/*
+	cout << mejor[0].first << " " << mejor[0].second << endl;
+	cout << mejor[CUANTOSELEMENTOS-1].first << " " << mejor[CUANTOSELEMENTOS-1].second << endl;
+	cout << promedio[0].first << " " << promedio[0].second << endl;
+	cout << promedio[CUANTOSELEMENTOS-1].first << " " << promedio[CUANTOSELEMENTOS-1].second << endl;
+	*/
 	
 	glBegin(GL_POINTS);
 	int j = 0;
@@ -316,8 +322,8 @@ int main(int argc, char** argv) {
 
 	promedio.reserve(1000);
 	mejor.reserve(1000);
-	repeticiones = 80;
-	algoritmos_gen(CUANTOSELEMENTOS);
+
+	algoritmos_gen(CUANTOSELEMENTOS, 10);
 	///cout <<endl << "mutacion_ " << mutacion_(0b11011101, 6,3);	///0b11 100 101
 
 
